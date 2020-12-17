@@ -5,7 +5,13 @@
     <p>{{ data.price }}</p>
     <input v-model="cartItem.quantity" type="number" />
     <p>{{ data.description }}</p>
-    <button class="button--green" @click="addItemToCart(cartItem)">
+    <button
+      class="button--green"
+      @click="
+        addItemToCart(cartItem)
+        displayMessage()
+      "
+    >
       Add to Cart
     </button>
   </div>
@@ -28,6 +34,14 @@ export default {
   },
   methods: {
     ...mapActions(['addItemToCart']),
+    displayMessage() {
+      this.$swal({
+        title: 'Cart Updated!',
+        text: `${this.data.name} was added to your cart!`,
+        icon: 'success',
+        button: 'Ok',
+      })
+    },
   },
 }
 </script>

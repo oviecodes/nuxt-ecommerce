@@ -15,7 +15,8 @@
     "@nuxtjs/pwa": "^3.0.2",
     "@stripe/stripe-js": "^1.11.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "vue-swal": "^1.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

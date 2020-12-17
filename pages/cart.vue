@@ -24,6 +24,9 @@ export default {
   computed: {
     ...mapGetters(['getCart', 'getCartTotal']),
   },
+  mounted() {
+    this.displayMessage()
+  },
   methods: {
     async handleSubmit(e) {
       //   console.log(JSON.stringify(this.dataItems))
@@ -50,6 +53,24 @@ export default {
       })
       console.log(await response.json())
       if (result.error) {
+      }
+    },
+    // using vue-swal to display messages
+    displayMessage() {
+      if (this.$route.query.success) {
+        this.$swal({
+          title: 'Order placed!',
+          text: 'You will receive an email confirmation.',
+          icon: 'success',
+          button: 'Ok',
+        })
+      } else if (this.$route.query.canceled) {
+        this.$swal({
+          title: 'Order canceled!',
+          text: "continue to shop around and checkout when you're ready.",
+          icon: 'warning',
+          button: 'Ok',
+        })
       }
     },
   },
