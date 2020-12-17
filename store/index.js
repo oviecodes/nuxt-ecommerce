@@ -16,7 +16,11 @@ export const getters = {
   womenProducts: (state) => state.womenProducts,
   getCart: (state) => state.cartItems,
   getCartTotal: (state) =>
-    state.cartItems.map((el) => el.price * el.quantity).reduce((a, b) => a + b),
+    state.cartItems.length < 1
+      ? '0'
+      : state.cartItems
+          .map((el) => el.price * el.quantity)
+          .reduce((a, b) => a + b),
 }
 
 export const actions = {
