@@ -14,8 +14,12 @@
       <div class="sm:m-3 md:m-5 p-3 sm:p-0">
         <p class="my-2"><span>Price: </span>{{ data.price | formatPrice }}</p>
         <span class="my-2">Quantity: </span
-        ><input v-model="cartItem.quantity" type="number" />
-        <p class="my-2">{{ data.description }}</p>
+        ><input
+          v-model="cartItem.quantity"
+          class="p-3 border border-solid border-t-0 border-l-0 border-r-0 border-b-1"
+          type="number"
+        />
+        <p class="my-2 text-sm">{{ data.description }}</p>
         <button
           class="button--green my-2"
           @click="
@@ -27,6 +31,8 @@
         </button>
       </div>
     </div>
+    <Ads class="mx-auto sm:m-10" />
+    <Footer />
   </div>
 </template>
 
@@ -38,6 +44,7 @@ export default {
   data() {
     return {
       cartItem: {
+        id: this.data.id,
         name: this.data.name,
         url: this.data.Image[0].url,
         price: this.data.price,

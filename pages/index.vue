@@ -7,6 +7,8 @@
       <Featured class="mx-auto" :data="allProducts" />
     </div>
     <Ads class="mx-auto sm:m-10" />
+    <NewsLetter class="mx-auto" />
+    <Footer />
   </div>
 </template>
 

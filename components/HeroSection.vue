@@ -1,10 +1,15 @@
 <template>
   <div
-    class="hero relative max-h-screen md:min-h-screen flex flex-col justify-center items-center text-center mx-auto bg-cover"
+    class="hero relative max-h-screen flex flex-col justify-center items-center text-center mx-auto bg-cover"
   >
-    <div class="relative m-10">
+    <div class="relative m-10 md:m-20">
+      <div class="relative">
+        <img class="absolute left-0 top-0" src="Repeat_Grid_2.png" alt="" />
+      </div>
       <div class="z-10 relative">
-        <h1 class="title text-white m-3 font-bold">Unique Essence</h1>
+        <h1 class="text-5xl text-white m-3 font-bold md:text-6xl">
+          Unique Essence Store
+        </h1>
         <p class="text-white subtitle">...your one stop shop for all</p>
       </div>
       <div class="circle absolute z-0 right-0 top-0"></div>

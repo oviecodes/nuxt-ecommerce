@@ -27,6 +27,9 @@ export const actions = {
   async addItemToCart({ commit }, cartItem) {
     await commit('setCartItem', cartItem)
   },
+  async deleteCartItem({ commit }, id) {
+    await commit('removeCartItem', id)
+  },
 }
 
 export const mutations = {
@@ -35,4 +38,9 @@ export const mutations = {
   setMenProducts: (state, products) => (state.menProducts = products),
   setWomenProducts: (state, products) => (state.womenProducts = products),
   setCartItem: (state, item) => state.cartItems.push(item),
+  removeCartItem: (state, id) =>
+    state.cartItems.splice(
+      state.cartItems.findIndex((el) => el.id === id),
+      1
+    ),
 }

@@ -1,43 +1,46 @@
 <template>
   <div>
     <Nav class="sticky top-0" />
-    <h1 class="m-5">Your Cart</h1>
+    <div class="w-4/5 sm:w-1/2 mx-auto">
+      <h1 class="m-5">Your Cart</h1>
+    </div>
     <div
       v-for="item in getCart"
       :key="item.id"
-      class="flex items-center space-x-3 mx-auto"
+      class="w-4/5 sm:w-1/2 flex items-center space-x-3 mx-auto shadow-lg m-5 p-3"
     >
       <div>
-        <img :src="`http://localhost:1337${item.url}`" alt="" class="h-16" />
+        <img class="h-24" :src="`http://localhost:1337${item.url}`" alt="" />
       </div>
       <div>
         <p>
           {{ item.name }}
         </p>
         <p>
-          {{ item.quantity }}
+          {{ item.quantity | formatQuantity }}
         </p>
-      </div>
-      <div>
-        <p>Delete</p>
+        <p @click="deleteCartItem(item.id)">Delete</p>
       </div>
     </div>
-    <p>
-      <span>Total: </span> {{ formatCartTotal(getCartTotal) | formatPrice }}
-    </p>
-    <button
-      v-show="getCartTotal > 0"
-      class="button--green"
-      :disabled="getCartTotal == 0"
-      @click="handleSubmit"
-    >
-      checkout
-    </button>
+    <div class="w-4/5 sm:w-1/2 mb-2 mx-auto">
+      <p>
+        <span>Total: </span> {{ formatCartTotal(getCartTotal) | formatPrice }}
+      </p>
+      <button
+        v-show="getCartTotal > 0"
+        class="button--green mx-auto"
+        @click="handleSubmit"
+      >
+        checkout
+      </button>
+    </div>
+    <Ads class="mx-auto sm:m-10" />
+    <Footer />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { loadStripe } from '@stripe/stripe-js'
 export default {
   data() {
@@ -107,10 +110,18 @@ export default {
         return num
       }
     },
+    ...mapActions(['deleteCartItem']),
   },
   filters: {
     formatPrice(price) {
       return `$${price}`
+    },
+    formatQuantity(num) {
+      if (num === 1) {
+        return `${num} unit`
+      } else {
+        return `${num} units`
+      }
     },
   },
 }

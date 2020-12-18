@@ -7,6 +7,8 @@
         <Featured :data="menProducts" />
       </div>
     </div>
+    <Ads class="mx-auto sm:m-10" />
+    <Footer />
   </div>
 </template>
 
