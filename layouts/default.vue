@@ -60,4 +60,8 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+.container {
+  width: 80%;
+}
 </style>

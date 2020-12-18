@@ -1,9 +1,12 @@
 <template>
   <div>
     <HeroSection />
-    <div class="flex justify-center text-center mx-auto">
-      <Featured :data="allProducts" />
+    <Nav class="sticky top-0" />
+    <div class="sm:w-11/12 md:w-4/5 mx-auto">
+      <h1 class="m-5">Featured Products</h1>
+      <Featured class="mx-auto" :data="allProducts" />
     </div>
+    <Ads class="mx-auto sm:m-10" />
   </div>
 </template>
 

@@ -1,19 +1,32 @@
 <template>
   <div>
-    <h3>{{ data.name }}</h3>
-    <img :src="`http://localhost:1337${data.Image[0].url}`" />
-    <p>{{ data.price }}</p>
-    <input v-model="cartItem.quantity" type="number" />
-    <p>{{ data.description }}</p>
-    <button
-      class="button--green"
-      @click="
-        addItemToCart(cartItem)
-        displayMessage()
-      "
+    <Nav class="sticky top-0" />
+    <h1 class="font-bold m-5 md:mx-10">{{ data.name }}</h1>
+    <div
+      class="sm:grid grid-cols-2 justify-center shadow-lg items-center gap-3 m-5 md:m-5"
     >
-      Add to Cart
-    </button>
+      <div>
+        <img
+          class="max-h-screen"
+          :src="`http://localhost:1337${data.Image[0].url}`"
+        />
+      </div>
+      <div class="sm:m-3 md:m-5 p-3 sm:p-0">
+        <p class="my-2"><span>Price: </span>{{ data.price | formatPrice }}</p>
+        <span class="my-2">Quantity: </span
+        ><input v-model="cartItem.quantity" type="number" />
+        <p class="my-2">{{ data.description }}</p>
+        <button
+          class="button--green my-2"
+          @click="
+            addItemToCart(cartItem)
+            displayMessage()
+          "
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,6 +54,11 @@ export default {
         icon: 'success',
         button: 'Ok',
       })
+    },
+  },
+  filters: {
+    formatPrice(price) {
+      return `$${price}`
     },
   },
 }

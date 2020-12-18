@@ -33,6 +33,6 @@ export const mutations = {
   setProducts: (state, products) => (state.allProducts = products),
   setFeaturedProducts: (state, products) => (state.featuredProducts = products),
   setMenProducts: (state, products) => (state.menProducts = products),
-  setWomenProduct: (state, products) => (state.womenProducts = products),
+  setWomenProducts: (state, products) => (state.womenProducts = products),
   setCartItem: (state, item) => state.cartItems.push(item),
 }

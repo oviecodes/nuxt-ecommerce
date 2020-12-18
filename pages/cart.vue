@@ -1,11 +1,38 @@
 <template>
   <div>
-    <h1>Your Cart</h1>
-    <p v-for="item in getCart" :key="item.id">
-      {{ item.name }}
+    <Nav class="sticky top-0" />
+    <h1 class="m-5">Your Cart</h1>
+    <div
+      v-for="item in getCart"
+      :key="item.id"
+      class="flex items-center space-x-3 mx-auto"
+    >
+      <div>
+        <img :src="`http://localhost:1337${item.url}`" alt="" class="h-16" />
+      </div>
+      <div>
+        <p>
+          {{ item.name }}
+        </p>
+        <p>
+          {{ item.quantity }}
+        </p>
+      </div>
+      <div>
+        <p>Delete</p>
+      </div>
+    </div>
+    <p>
+      <span>Total: </span> {{ formatCartTotal(getCartTotal) | formatPrice }}
     </p>
-    <p>{{ getCartTotal }}</p>
-    <button class="button--green" @click="handleSubmit">checkout</button>
+    <button
+      v-show="getCartTotal > 0"
+      class="button--green"
+      :disabled="getCartTotal == 0"
+      @click="handleSubmit"
+    >
+      checkout
+    </button>
   </div>
 </template>
 
@@ -39,7 +66,7 @@ export default {
         },
         body: JSON.stringify({
           cartDetail: this.getCart,
-          cartTotal: this.getCartTotal,
+          cartTotal: this.getCartTotal.toFixed(2),
         }),
       })
       // stripe logic
@@ -73,8 +100,20 @@ export default {
         })
       }
     },
+    formatCartTotal(num) {
+      if (num > 0) {
+        return num.toFixed()
+      } else {
+        return num
+      }
+    },
+  },
+  filters: {
+    formatPrice(price) {
+      return `$${price}`
+    },
   },
 }
 </script>
 
-<style></style>
+<style scoped></style>

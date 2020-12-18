@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h1>welcome to the Mens collection</h1>
-    <div class="flex justify-center text-center mx-auto">
-      <Featured :data="menProducts" />
+    <Nav class="sticky top-0" />
+    <div class="md:w-4/5 sm:w-11/12 mx-auto">
+      <h1 class="m-5">Men's collection</h1>
+      <div class="flex justify-center text-center mx-auto">
+        <Featured :data="menProducts" />
+      </div>
     </div>
   </div>
 </template>
