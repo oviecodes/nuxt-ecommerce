@@ -59,6 +59,10 @@ html {
   background-color: #35495e;
 }
 
+button:focus {
+  outline: none;
+}
+
 .container {
   width: 80%;
 }

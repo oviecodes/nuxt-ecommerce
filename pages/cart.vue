@@ -83,6 +83,7 @@ export default {
       })
       console.log(await response.json())
       if (result.error) {
+        this.$nuxt.context.error(result.error.message)
       }
     },
     // using vue-swal to display messages

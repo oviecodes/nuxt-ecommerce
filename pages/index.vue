@@ -23,10 +23,14 @@ export default {
   methods: {
     ...mapActions(['getProducts']),
   },
-  async asyncData({ store }) {
-    const response = await fetch(`http://localhost:1337/products`)
-    const products = await response.json()
-    store.commit('setProducts', products)
+  async asyncData({ store, error }) {
+    try {
+      const response = await fetch(`http://localhost:1337/products`)
+      const products = await response.json()
+      store.commit('setProducts', products)
+    } catch (e) {
+      error(e)
+    }
   },
   computed: {
     ...mapGetters(['allProducts']),

@@ -16,13 +16,17 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ store }) {
-    const response = await fetch(`http://localhost:1337/products`)
-    const products = await response.json()
-    const womenProds = products.filter(
-      (product) => product.category.name === 'women'
-    )
-    store.commit('setWomenProducts', womenProds)
+  async asyncData({ store, error }) {
+    try {
+      const response = await fetch(`http://localhost:1337/products`)
+      const products = await response.json()
+      const womenProds = products.filter(
+        (product) => product.category.name === 'women'
+      )
+      store.commit('setWomenProducts', womenProds)
+    } catch (e) {
+      error(e)
+    }
   },
   data() {
     return {
