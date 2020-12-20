@@ -61,16 +61,9 @@ export default {
     async handleSubmit(e) {
       //   console.log(JSON.stringify(this.dataItems))
       e.preventDefault()
-      const response = await fetch(`http://localhost:1337/orders`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          cartDetail: this.getCart,
-          cartTotal: this.getCartTotal.toFixed(2),
-        }),
+      const response = await this.$http.$post(`http://localhost:1337/orders`, {
+        cartDetail: this.getCart,
+        cartTotal: this.getCartTotal.toFixed(2),
       })
       this.$swal({
         title: 'Please wait',
@@ -82,12 +75,12 @@ export default {
       const stripePromise = loadStripe(
         'pk_test_51Hyq4NFCEMnfAHVZvY5F9ejLYvE96SUzx5fR8leQTZaGyoOcj4gXhkmNd6OS30sOaVCIqGdEy0Wz6OLwdk8YV9x200gexCP8RC'
       )
-      const session = await response.json()
+      const session = response
       const stripe = await stripePromise
       const result = await stripe.redirectToCheckout({
         sessionId: session.id,
       })
-      console.log(await response.json())
+      console.log(response)
       if (result.error) {
         this.$nuxt.context.error(result.error.message)
       }
@@ -124,11 +117,8 @@ export default {
       return `$${price}`
     },
     formatQuantity(num) {
-      if (num === 1) {
-        return `${num} unit`
-      } else {
-        return `${num} units`
-      }
+      const qtyNum = num === 1 ? `${num} unit` : `${num} units`
+      return qtyNum
     },
   },
 }
