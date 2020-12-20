@@ -10,7 +10,11 @@
       class="w-4/5 sm:w-1/2 flex items-center space-x-3 mx-auto shadow-lg m-5 p-3"
     >
       <div>
-        <img class="h-24" :src="`http://localhost:1337${item.url}`" alt="" />
+        <img
+          class="h-24"
+          :src="`${process.env.STRAPI_URL}${item.url}`"
+          alt=""
+        />
       </div>
       <div>
         <p>
@@ -61,10 +65,13 @@ export default {
     async handleSubmit(e) {
       //   console.log(JSON.stringify(this.dataItems))
       e.preventDefault()
-      const response = await this.$http.$post(`http://localhost:1337/orders`, {
-        cartDetail: this.getCart,
-        cartTotal: this.getCartTotal.toFixed(2),
-      })
+      const response = await this.$http.$post(
+        `${process.env.STRAPI_URL}/orders`,
+        {
+          cartDetail: this.getCart,
+          cartTotal: this.getCartTotal.toFixed(2),
+        }
+      )
       this.$swal({
         title: 'Please wait',
         text: 'redirecting you to stripe, click ok',
@@ -105,7 +112,7 @@ export default {
     },
     formatCartTotal(num) {
       if (num > 0) {
-        return num.toFixed()
+        return num.toFixed(2)
       } else {
         return num
       }
