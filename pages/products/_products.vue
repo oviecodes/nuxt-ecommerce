@@ -1,7 +1,7 @@
 <template>
   <div>
     <Nav class="sticky top-0" />
-    <h1 v-if="currentProduct !== 'undefined'" class="font-bold m-5 md:mx-10">
+    <h1 class="font-bold m-5 md:mx-10">
       {{ currentProduct.name }}
     </h1>
     <Products v-if="currentProduct !== 'undefined'" :data="currentProduct" />
