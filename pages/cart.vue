@@ -2,7 +2,7 @@
   <div>
     <Nav class="sticky top-0" />
     <div class="w-4/5 sm:w-1/2 mx-auto">
-      <h1 class="m-5">Your Cart</h1>
+      <h1 class="m-5 font-bold text-lg">Your Cart</h1>
     </div>
     <div
       v-for="item in getCart"
@@ -61,16 +61,25 @@ export default {
     async handleSubmit(e) {
       //   console.log(JSON.stringify(this.dataItems))
       e.preventDefault()
-      const response = await fetch(`http://localhost:1337/orders`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          cartDetail: this.getCart,
-          cartTotal: this.getCartTotal.toFixed(2),
-        }),
+      const response = await fetch(
+        `https://enigmatic-peak-00809.herokuapp.com/orders`,
+        {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cartDetail: this.getCart,
+            cartTotal: this.getCartTotal.toFixed(2),
+          }),
+        }
+      )
+      this.$swal({
+        title: 'Please wait',
+        text: 'redirecting you to stripe, click ok',
+        icon: 'success',
+        button: 'Ok',
       })
       // stripe logic
       const stripePromise = loadStripe(

@@ -3,8 +3,8 @@
     <HeroSection />
     <Nav class="sticky top-0" />
     <div class="sm:w-11/12 md:w-4/5 mx-auto">
-      <h1 class="m-5">Featured Products</h1>
-      <Featured class="mx-auto" :data="allProducts" />
+      <h1 class="m-5 font-bold text-lg">Featured Products</h1>
+      <Featured class="mx-auto" :data="featuredProducts" />
     </div>
     <Ads class="mx-auto sm:m-10" />
     <NewsLetter class="mx-auto" />
@@ -13,27 +13,27 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  data() {
-    return {
-      products: [],
-    }
-  },
-  methods: {
-    ...mapActions(['getProducts']),
-  },
   async asyncData({ store, error }) {
     try {
-      const response = await fetch(`http://localhost:1337/products`)
+      const response = await fetch(
+        `https://enigmatic-peak-00809.herokuapp.com/products`
+      )
       const products = await response.json()
-      store.commit('setProducts', products)
+      const featuredProds = products.filter((prod) => prod.featured)
+      store.commit('setFeaturedProducts', featuredProds)
     } catch (e) {
       error(e)
     }
   },
+  data() {
+    return {
+      featuredProds: [],
+    }
+  },
   computed: {
-    ...mapGetters(['allProducts']),
+    ...mapGetters(['featuredProducts']),
   },
 }
 </script>

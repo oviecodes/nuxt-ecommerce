@@ -2,7 +2,7 @@
   <div class="navbar flex text-white relative">
     <div class="nav-item-center flex space-x-6 sm:space-x-20 p-5 mx-auto">
       <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/">All</NuxtLink>
+      <NuxtLink to="/all">All</NuxtLink>
       <NuxtLink to="/men">Men</NuxtLink>
       <NuxtLink to="/women">Women</NuxtLink>
     </div>

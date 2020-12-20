@@ -11,7 +11,7 @@
         <div class="img-wrapper h-3/4 mx-auto max-h-screen">
           <img
             class="flex-shrink h-1/2"
-            :src="`http://localhost:1337${product.Image[0].url}`"
+            :src="`https://enigmatic-peak-00809.herokuapp.com${product.Image[0].url}`"
             alt=""
           />
         </div>
