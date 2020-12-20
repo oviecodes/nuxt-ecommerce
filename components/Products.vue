@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Nav class="sticky top-0" />
-    <h1 class="font-bold m-5 md:mx-10">{{ data.name }}</h1>
     <div
       class="sm:grid grid-cols-2 justify-center shadow-lg items-center gap-3 m-5 md:m-5"
     >
@@ -31,8 +29,6 @@
         </button>
       </div>
     </div>
-    <Ads class="mx-auto sm:m-10" />
-    <Footer />
   </div>
 </template>
 

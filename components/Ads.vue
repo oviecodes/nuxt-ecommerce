@@ -5,7 +5,7 @@
     </h3>
     <img
       class="h-48 sm:pl-20"
-      src="uriel-soberanes-MxVkWPiJALs-unsplash-removebg-preview.png"
+      :src="`uriel-soberanes-MxVkWPiJALs-unsplash-removebg-preview.png`"
       alt=""
     />
   </div>
