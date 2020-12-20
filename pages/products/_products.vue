@@ -16,7 +16,7 @@ export default {
       currentProduct: {},
     }
   },
-  created() {
+  mounted() {
     const id = this.$route.params.products
     this.currentProduct = this.allProducts.find((product) => product.id === id)
   },
