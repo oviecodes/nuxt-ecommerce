@@ -16,16 +16,12 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ store, error }) {
+  async asyncData({ $strapi, store, error }) {
     try {
-      const response = await fetch(
-        `https://enigmatic-peak-00809.herokuapp.com/products`
-      )
-      const products = await response.json()
-      const womenProds = products.filter(
-        (product) => product.category.name === 'women'
-      )
-      store.commit('setWomenProducts', womenProds)
+      const response = await $strapi.$products.find([
+        ['category.name', 'women'],
+      ])
+      store.commit('setWomenProducts', response)
     } catch (e) {
       error(e)
     }

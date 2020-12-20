@@ -1,27 +1,26 @@
 <template>
   <div>
     <Nav class="sticky top-0" />
-    <h1 class="font-bold m-5 md:mx-10">{{ currentProduct.name }}</h1>
-    <Products :data="currentProduct" />
+    <h1 v-if="currentProduct !== 'undefined'" class="font-bold m-5 md:mx-10">
+      {{ currentProduct.name }}
+    </h1>
+    <Products v-if="currentProduct !== 'undefined'" :data="currentProduct" />
     <Ads class="mx-auto sm:m-10" />
     <Footer />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
+  async asyncData({ $strapi, route }) {
+    const id = route.params.products
+    const currentProduct = await $strapi.$products.findOne(id)
+    return { currentProduct }
+  },
   data() {
     return {
       currentProduct: {},
     }
-  },
-  mounted() {
-    const id = this.$route.params.products
-    this.currentProduct = this.allProducts.find((product) => product.id === id)
-  },
-  computed: {
-    ...mapGetters(['allProducts']),
   },
 }
 </script>

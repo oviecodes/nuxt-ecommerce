@@ -33,8 +33,13 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // strapi for nuxt
+    '@nuxtjs/strapi',
   ],
 
+  strapi: {
+    entities: ['products', 'orders'],
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
@@ -58,4 +63,8 @@ export default {
      */
     vendor: ['vue-swal'],
   },
+
+  // env: {
+  //   STRAPI_URL: `https://enigmatic-peak-00809.herokuapp.com`,
+  // },
 }
