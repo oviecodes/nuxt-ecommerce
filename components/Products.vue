@@ -4,10 +4,7 @@
       class="sm:grid grid-cols-2 justify-center shadow-lg items-center gap-3 m-5 md:m-5"
     >
       <div>
-        <img
-          class="max-h-screen"
-          :src="`${data.Image[0].url}`"
-        />
+        <img class="max-h-screen" :src="`${data.Image[0].url}`" />
       </div>
       <div class="sm:m-3 md:m-5 p-3 sm:p-0">
         <p class="my-2"><span>Price: </span>{{ data.price | formatPrice }}</p>

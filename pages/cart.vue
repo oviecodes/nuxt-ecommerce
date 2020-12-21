@@ -10,11 +10,7 @@
       class="w-4/5 sm:w-1/2 flex items-center space-x-3 mx-auto shadow-lg m-5 p-3"
     >
       <div>
-        <img
-          class="h-24"
-          :src="`${item.url}`"
-          alt=""
-        />
+        <img class="h-24" :src="`${item.url}`" alt="" />
       </div>
       <div>
         <p>
@@ -79,7 +75,9 @@ export default {
         button: 'Ok',
       })
       // stripe logic
-      const stripePromise = loadStripe(`${process.env.STRIPE_KEY}`)
+      const stripePromise = loadStripe(
+        'pk_test_51Hyq4NFCEMnfAHVZvY5F9ejLYvE96SUzx5fR8leQTZaGyoOcj4gXhkmNd6OS30sOaVCIqGdEy0Wz6OLwdk8YV9x200gexCP8RC'
+      )
       const session = response
       const stripe = await stripePromise
       const result = await stripe.redirectToCheckout({
