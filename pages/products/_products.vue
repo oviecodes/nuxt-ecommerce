@@ -4,7 +4,7 @@
     <h1 class="font-bold m-5 md:mx-10">
       {{ currentProduct.name }}
     </h1>
-    <Products v-if="currentProduct !== 'undefined'" :data="currentProduct" />
+    <Products :data="currentProduct" />
     <Ads class="mx-auto sm:m-10" />
     <Footer />
   </div>

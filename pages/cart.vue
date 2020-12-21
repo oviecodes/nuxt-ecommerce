@@ -12,7 +12,7 @@
       <div>
         <img
           class="h-24"
-          :src="`${process.env.STRAPI_URL}${item.url}`"
+          :src="`https://enigmatic-peak-00809.herokuapp.com${item.url}`"
           alt=""
         />
       </div>
@@ -66,7 +66,7 @@ export default {
       //   console.log(JSON.stringify(this.dataItems))
       e.preventDefault()
       const response = await this.$http.$post(
-        `${process.env.STRAPI_URL}/orders`,
+        `https://enigmatic-peak-00809.herokuapp.com/orders`,
         {
           cartDetail: this.getCart,
           cartTotal: this.getCartTotal.toFixed(2),

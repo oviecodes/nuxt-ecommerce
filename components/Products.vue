@@ -6,7 +6,7 @@
       <div>
         <img
           class="max-h-screen"
-          :src="`${process.env.STRAPI_URL}${data.Image[0].url}`"
+          :src="`https://enigmatic-peak-00809.herokuapp.com${data.Image[0].url}`"
         />
       </div>
       <div class="sm:m-3 md:m-5 p-3 sm:p-0">
