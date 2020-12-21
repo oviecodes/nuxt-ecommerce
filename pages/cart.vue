@@ -12,7 +12,7 @@
       <div>
         <img
           class="h-24"
-          :src="`https://enigmatic-peak-00809.herokuapp.com${item.url}`"
+          :src="`{item.url}`"
           alt=""
         />
       </div>
