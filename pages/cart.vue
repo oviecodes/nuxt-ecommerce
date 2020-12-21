@@ -79,7 +79,7 @@ export default {
         button: 'Ok',
       })
       // stripe logic
-      const stripePromise = loadStripe(process.env.STRIPE_KEY)
+      const stripePromise = loadStripe(`${process.env.STRIPE_KEY}`)
       const session = response
       const stripe = await stripePromise
       const result = await stripe.redirectToCheckout({
