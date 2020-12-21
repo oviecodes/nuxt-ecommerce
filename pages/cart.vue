@@ -12,7 +12,7 @@
       <div>
         <img
           class="h-24"
-          :src="`{item.url}`"
+          :src="`${item.url}`"
           alt=""
         />
       </div>
