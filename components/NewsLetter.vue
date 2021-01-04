@@ -6,7 +6,7 @@
       <h1 class="text-lg m-7">Sign Up For NewsLetter</h1>
     </div>
     <div>
-      <form @submit="handleSuscribe()" >
+      <form @submit="handleSuscribe()">
         <input
           id=""
           v-model="email"
@@ -39,7 +39,7 @@ export default {
         button: 'Ok',
       })
       await this.$strapi.$subscribers.create({ Email: this.email })
-      //clear email input
+      // clear email input
       this.email = ''
     },
   },
