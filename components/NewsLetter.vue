@@ -8,11 +8,13 @@
     <div>
       <input
         id=""
+        v-model="email"
         class="p-2 m-3 sm:m-0 border border-solid border-t-0 border-l-0 border-r-0 border-b-1 outline-none border-black"
         type="email"
         name=""
+        placeholder="email"
       />
-      <button class="button--grey">Subscribe</button>
+      <button class="button--grey" @click="handleSuscribe()">Subscribe</button>
     </div>
   </div>
 </template>
@@ -20,6 +22,23 @@
 <script>
 export default {
   name: 'NewsLetter',
+  data() {
+    return {
+      email: '',
+    }
+  },
+  methods: {
+    async handleSuscribe() {
+      this.$swal({
+        title: 'Successful!',
+        text: 'Thanks for Subscribing',
+        icon: 'success',
+        button: 'Ok',
+      })
+      await this.$strapi.$subscribers.create({ Email: this.email })
+      this.email = ''
+    },
+  },
 }
 </script>
 

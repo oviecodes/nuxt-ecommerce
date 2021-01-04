@@ -19,7 +19,9 @@
         <p>
           {{ item.quantity | formatQuantity }}
         </p>
-        <p @click="deleteCartItem(item.id)">Delete</p>
+        <button class="button--delete" @click="deleteCartItem(item.id)">
+          Delete
+        </button>
       </div>
     </div>
     <div class="w-4/5 sm:w-1/2 mb-2 mx-auto">
@@ -93,7 +95,7 @@ export default {
       if (this.$route.query.success) {
         this.$swal({
           title: 'Order placed!',
-          text: 'You will receive an email confirmation.',
+          text: 'Thanks for placing your orders',
           icon: 'success',
           button: 'Ok',
         })

@@ -59,6 +59,14 @@ html {
   background-color: #35495e;
 }
 
+.button--delete {
+  display: inline-block;
+  border: 1px solid #35495e;
+  padding: 5px;
+  color: white;
+  background-color: #35495e;
+}
+
 button:focus {
   outline: none;
 }
