@@ -6,7 +6,7 @@
       <h1 class="text-lg m-7">Sign Up For NewsLetter</h1>
     </div>
     <div>
-      <form @submit="handleSuscribe()">
+      <form @submit="handleSuscribe">
         <input
           id=""
           v-model="email"
