@@ -16,9 +16,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ $strapi, store, error }) {
+  async asyncData({ $strapi, $http, store, error }) {
     try {
-      const response = await $strapi.$products.find([['category.name', 'men']])
+      let response = await $http.$get(
+        `http://localhost:1337/api/products/?populate=*`
+      )
+      response = response.data.filter(
+        (el) => el.attributes.category.data.attributes.name === 'men'
+      )
       store.commit('setMenProducts', response)
     } catch (e) {
       error(e)

@@ -2,7 +2,7 @@
   <div>
     <Nav class="sticky top-0" />
     <h1 class="font-bold m-5 md:mx-10">
-      {{ currentProduct.name }}
+      {{ currentProduct.attributes.name }}
     </h1>
     <Products :data="currentProduct" />
     <Ads class="mx-auto sm:m-10" />
@@ -12,9 +12,14 @@
 
 <script>
 export default {
-  async asyncData({ $strapi, route }) {
+  async asyncData({ $strapi, $http, route }) {
     const id = route.params.products
-    const currentProduct = await $strapi.$products.findOne(id)
+    // const currentProduct = await $strapi.$products.findOne(id)
+    const response = await $http.$get(
+      `http://localhost:1337/api/products/${id}?populate=*`
+    )
+    console.log(response)
+    const { data: currentProduct } = response
     return { currentProduct }
   },
   data() {

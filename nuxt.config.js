@@ -67,6 +67,7 @@ export default {
   },
 
   env: {
-    STRAPI_URL: `https://enigmatic-peak-00809.herokuapp.com`,
+    // STRAPI_URL: `https://enigmatic-peak-00809.herokuapp.com`,
+    STRAPI_URL: `http://localhost:1337`,
   },
 }
