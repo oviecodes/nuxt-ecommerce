@@ -64,7 +64,8 @@ export default {
       //   console.log(JSON.stringify(this.dataItems))
       e.preventDefault()
       const response = await this.$http.$post(
-        `https://enigmatic-peak-00809.herokuapp.com/orders`,
+        // `https://enigmatic-peak-00809.herokuapp.com/orders`,
+        `http://localhost:1337/api/orders`,
         {
           cartDetail: this.getCart,
           cartTotal: this.getCartTotal.toFixed(2),
