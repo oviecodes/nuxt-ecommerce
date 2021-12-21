@@ -8,17 +8,18 @@
         :key="i"
         class="flex flex-col max-h-screen shadow-xl m-8 sm:m-2 md:m-4 justify-center items-center"
       >
+        <!-- <div>{{ product }}</div> -->
         <div class="img-wrapper h-3/4 mx-auto max-h-screen">
           <img
             class="flex-shrink h-1/2"
-            :src="`${product.Image[0].url}`"
+            :src="`http://localhost:1337${product.attributes.image.data.attributes.formats.small.url}`"
             alt=""
           />
         </div>
 
         <div>
           <p class="text-center m-3">
-            {{ product.name }}
+            {{ product.attributes.name }}
           </p>
 
           <NuxtLink :to="`/products/${product.id}`">

@@ -64,7 +64,8 @@ export default {
       //   console.log(JSON.stringify(this.dataItems))
       e.preventDefault()
       const response = await this.$http.$post(
-        `https://enigmatic-peak-00809.herokuapp.com/orders`,
+        // `https://enigmatic-peak-00809.herokuapp.com/orders`,
+        `http://localhost:1337/api/orders`,
         {
           cartDetail: this.getCart,
           cartTotal: this.getCartTotal.toFixed(2),
@@ -78,7 +79,7 @@ export default {
       })
       // stripe logic
       const stripePromise = loadStripe(
-        PROCESS.env.STRIPE_KEY
+        `pk_test_51Hyq4NFCEMnfAHVZvY5F9ejLYvE96SUzx5fR8leQTZaGyoOcj4gXhkmNd6OS30sOaVCIqGdEy0Wz6OLwdk8YV9x200gexCP8RC`
       )
       const session = response
       const stripe = await stripePromise
